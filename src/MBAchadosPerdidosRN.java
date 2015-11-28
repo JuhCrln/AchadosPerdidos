@@ -10,6 +10,7 @@ public class MBAchadosPerdidosRN {
 	
 	public void salvarItem(){
 		servItem.adicionaItem(item);
+		item = new Item();
 	}
 	
 	public Item getItem() {
