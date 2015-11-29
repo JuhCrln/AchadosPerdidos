@@ -10,10 +10,10 @@
 </h:head>
 <h:body>
 	<h:form>
-		<p:outputLabel value="Tipo: " />
-		<p:inputText id="tipo" value="#{mBAchadosPerdidosRN.item.tipo}"
+		<p:outputLabel value="Estado: " />
+		<p:inputText id="nome" value="#{mBAchadosPerdidosRN.usuario.estado}"
 			feedback="true" />
-		<p:commandButton actionListener="#{mBAchadosPerdidosRN.salvarItem}"
+		<p:commandButton actionListener="#{mBAchadosPerdidosRN.salvarUsuario}"
 			value="Cadastrar" />
 	</h:form>
 </h:body>
