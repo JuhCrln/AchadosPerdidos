@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Achados e Perdidos RN</title>
+	<meta name="author" content="The Author"></meta>
+	<style type="text/css">
+.form-signin {
+	margin: 0 auto;
+	max-width: 330px;
+	padding: 15px;
+}
+
+.rodape {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px; /* Mesma Altura do Rodapé */
+}
+</style>
+</h:head>
+<h:body style="padding: 60px; background-color: #FFFFFF;">
+	<b:navBar brandHref="#" fixed="top" inverse="true">
+		<b:navbarLinks pull="right">
+			<b:navLink value="Sign Up" href="CadastroUsuario.xhtml"></b:navLink>
+		</b:navbarLinks>
+		<b:navbarLinks>
+			<b:navLink value="Sobre Nós" href="SobreNos.xhtml"></b:navLink>
+			<b:navLink value="Ajuda" href="Ajuda.xhtml"></b:navLink>
+			<b:navLink value="Contato" href="Contato.xhtml"></b:navLink>
+		</b:navbarLinks>
+	</b:navBar>
+	<b:container>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<!--<img src ="E:\Capturar.PNG"/>  -->
+		<h:form styleClass="form-signin" prependId="false">
+		<p:messages/>
+			<center>
+				<h2 class="form-signin-heading">Login</h2>
+			</center>
+			<b:inputText id="email" placeholder="E-mail" required= "true" requiredMessage="O E-mail é obrigatório">
+				<f:facet name="prepend">
+					<b:icon name="user" />
+				</f:facet>
+			</b:inputText>
+			<b:inputText id="password" placeholder="Senha" type="password" required = "true" requiredMessage="A senha é obrigatória">
+				<f:facet name="prepend">
+					<b:iconAwesome name="key" />
+				</f:facet>
+			</b:inputText>
+			<center>
+				<b:commandButton value="Sign In" size="lg" />
+			</center>
+			<br />
+			<center>
+				<a href="">Esqueceu a Senha?</a> <br /> <br /> <a href="">Acessar
+					como Visitante</a>
+			</center>
+		</h:form>
+		<p:spacer height="55" />
+		<hr />
+		<center>
+			<footer> @ Achados e Perdidos 2015 </footer>
+		</center>
+	</b:container>
+</h:body>
+</html>

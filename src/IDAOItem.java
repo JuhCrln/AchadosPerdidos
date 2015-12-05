@@ -8,7 +8,13 @@ public interface IDAOItem {
 
 	public void remove(int id);
 
-	public List<Item> buscaOutrasCaracteristicas(String outascaracteristicas);
+	public List<Item> buscaMarca(String marca);
+	
+	public List<Item> buscaModelo(String modelo);
+	
+	public List<Item> buscaCor(String cor);
+	
+	public List<Item> buscaItemCidade(String cidade);
 
 	public Item buscaID(int id);
 	

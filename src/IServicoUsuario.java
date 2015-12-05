@@ -9,5 +9,7 @@ public interface IServicoUsuario {
 	public List<Usuario> buscaUsuario();
 	
 	public void atualizaUsuario(Usuario usuario);
+	
+	public List<Usuario> buscaUsuario(String usuario);
 
 }

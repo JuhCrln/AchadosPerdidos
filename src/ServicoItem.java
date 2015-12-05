@@ -8,25 +8,37 @@ public class ServicoItem implements IServicoItem {
 		dao = new ItemDAO();
 	}
 
-	@Override
 	public void adicionaItem(Item item) {
 		dao.adciona(item);
 	}
 
-	@Override
 	public void removeItem(Item item) {
 		dao.remove(item.getId());
 	}
 
-	@Override
 	public List<Item> buscaItem() {
 		return dao.buscaItens();
 	}
-
-	@Override
+	
 	public void atualizaItem(Item item) {
 		dao.atualiza(item);
 		
+	}
+
+	public List<Item> buscaMarca(String marca) {
+		return dao.buscaMarca(marca);
+	}
+
+	public List<Item> buscaModelo(String modelo) {
+		return dao.buscaModelo(modelo);
+	}
+
+	public List<Item> buscaCor(String cor) {
+		return dao.buscaCor(cor);
+	}
+
+	public List<Item> buscaCidade(String cidade) {
+		return dao.buscaItemCidade(cidade);
 	}
 
 }

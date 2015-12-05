@@ -24,5 +24,9 @@ public class ServicoUsuario implements IServicoUsuario {
 		dao.atualiza(usuario);
 		
 	}
+	
+	public List<Usuario> buscaUsuario(String usuario){
+		return dao.buscaUsuario(usuario);
+	}
 
 }

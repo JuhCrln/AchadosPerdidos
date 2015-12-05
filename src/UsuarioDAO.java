@@ -34,8 +34,18 @@ public class UsuarioDAO implements IDAOUsuario {
 		Query query = manager
 				.createQuery("select t from Usuario as t");
 		@SuppressWarnings("unchecked")
-		List<Usuario> lista = query.getResultList();;
+		List<Usuario> lista = query.getResultList();
 		return lista;
+	}
+	
+	public List<Usuario> buscaUsuario(String usuario) {
+		Query query = manager
+				.createQuery("select t from Usuario as t where t.nomeDeUsuario = :paramnomeDeUsuario");
+		query.setParameter("paramnomeDeUsuario", usuario);
+		@SuppressWarnings("unchecked")
+		List<Usuario> lista = query.getResultList();
+		return lista;
+		
 	}
 
 }

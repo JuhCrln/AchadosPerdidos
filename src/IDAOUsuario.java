@@ -9,4 +9,6 @@ public interface IDAOUsuario {
 	public void remove(int id);
 	
 	public List<Usuario> busca();
+	
+	public List<Usuario> buscaUsuario(String usuario);
 }

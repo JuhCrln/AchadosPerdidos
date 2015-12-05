@@ -105,4 +105,9 @@ public class Item {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
+	
+	@Override
+	public String toString() {
+		return "(" + tipo + ", " + marca + ", " + cor + ", " + modelo + ", " + bairro + ", " + cidade + ", " + estado + ", " + pontoDeReferencia + ", " + horario + ", " + outrasCaracteristicas + ")";
+	}
 }
