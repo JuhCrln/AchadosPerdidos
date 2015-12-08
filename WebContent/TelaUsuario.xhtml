@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
         <title>Dashboard Template for BootsFaces</title>
         <meta name="author" content="Riccardo Massera"></meta>
@@ -77,32 +77,28 @@
     </h:head>
     <h:body style="padding-top: 60px">
         <h:outputScript library="holder" name="holder.js" />
-        <b:navBar brand="" brandHref="#" inverse="true" fixed="top" fluid="true">
-            <b:navbarLinks pull="right">
-                <b:navLink value="Sair" href="#"></b:navLink>
-            </b:navbarLinks>
-        </b:navBar>
+        <b:navBar brandHref="#" fixed="top" inverse="true">
+		<b:navbarLinks pull="right">
+			<b:navLink value="Sign Out" href="TelaInicial.xhtml"></b:navLink>
+		</b:navbarLinks>
+		<b:navbarLinks pull="left">
+			<b:dropMenu value="Perfil">
+				<b:navLink value="Cadastrar Perfil" href="CadastroUsuario.xhtml"></b:navLink>
+			</b:dropMenu>
+			<b:dropMenu value="Objetos">
+				<b:navLink value="Cadastrar" href="CadastroObjeto.xhtml"></b:navLink>
+				<b:navLink value="Buscar" href="BuscaObjeto.xhtml"></b:navLink>
+			</b:dropMenu>
+		</b:navbarLinks>
+	</b:navBar>
         <b:container fluid="true">
-            <b:row>
-                <b:column col-sm="3" col-md="2" styleClass="sidebar">
-                <center>
-                    <b:listLinks>
-                        <center><b:navLink header="Perfil" /></center>
-                        <b:navLink href="#" value="" />
-                        <b:navLink href="#" value="" />
-                        </b:listLinks>
-                    <b:listLinks>
-                     <center><b:navLink header="Objetos" /></center>
-                        <b:navLink value="" />
-                        <b:navLink value="" />
-                    </b:listLinks>
-                    </center>
-                </b:column>
-                <b:column col-sm="9" offset-sm="3" col-md="10" offset="2" styleClass="main">
-
-                </b:column>
-            </b:row>
-        </b:container>                
+        
+        </b:container> 
+        <p:spacer height="150" />
+		<hr />
+		<center>
+			<footer> @ Achados e Perdidos 2015 </footer>
+		</center>               
     </h:body>
 </html>
 

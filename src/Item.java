@@ -7,6 +7,7 @@ public class Item {
 	@Id
 	@GeneratedValue
 	private int id;
+	private int id_usuario;
 	private String cidade;
 	private String estado;
 	private String marca;
@@ -24,6 +25,14 @@ public class Item {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getId_usuario() {
+		return id_usuario;
+	}
+
+	public void setId_usuario(int id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
 	public String getCidade() {

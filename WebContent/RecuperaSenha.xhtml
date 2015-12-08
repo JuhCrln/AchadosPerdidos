@@ -27,43 +27,25 @@
 <h:body style="padding: 60px; background-color: #FFFFFF;">
 	<b:navBar brandHref="#" fixed="top" inverse="true">
 		<b:navbarLinks pull="right">
-			<b:navLink value="Sign Up" href="CadastroUsuario.xhtml"></b:navLink>
+			<b:navLink value="Cadastre-se" href="CadastroUsuario.xhtml"></b:navLink>
 			</b:navbarLinks>
 			<b:navbarLinks pull ="left">
-			<b:navLink value="Início" href="TelaInicial.xhtml"></b:navLink>
+			<b:navLink value="Sobre Nós" href="SobreNos.xhtml"></b:navLink>
+			<b:navLink value="Ajuda" href="Ajuda.xhtml"></b:navLink>
+			<b:navLink value="Contato" href="Contato.xhtml"></b:navLink>
 		</b:navbarLinks>
 	</b:navBar>
 	<b:container>
-		<br /><br /><br /><br /><br /><br />
-		<h:form styleClass="form-signin" prependId="false">
-			<center>
-				<h2 class="form-signin-heading"></h2>
-			</center>
-				<b:inputText id="password" placeholder="Senha" type="password">
-				<f:facet name="prepend">
-					<b:iconAwesome name="key" />
-				</f:facet>
-			</b:inputText>
-			<b:inputText id="password1" placeholder="Repita sua Senha" type="password">
-				<f:facet name="prepend">
-					<b:iconAwesome name="key" />
-				</f:facet>
-			</b:inputText>
-			<br/>
-			<p>Confirme Seus Dados</p>
-			<b:inputText id="dados" placeholder="Nome de Usuário">
-				<f:facet name="prepend">
-					<b:iconAwesome name="user" />
-				</f:facet>
-			</b:inputText>
-			<br/><br/>
-			<center>
-				<b:commandButton value="Enviar" size="lg" />
-			</center>
-			<br />
-		</h:form>
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<center>
+			Entre em contato conosco através do <b>E-mail:</b>
+				<br/>
+				<br/>
+				<b:icon name="envelope"/> achadoseperdidosrn@gmail.com
+				<br/>
+		</center>
+		<p:spacer height="210" />
 		<hr />
-		<p:spacer height="30" />
 		<center>
 			<footer> @ Achados e Perdidos 2015 </footer>
 		</center>

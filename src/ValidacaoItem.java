@@ -3,7 +3,7 @@
 import javax.faces.bean.ManagedBean;
  
 @ManagedBean
-public class Validação {
+public class ValidacaoItem {
      
     private String text;
     private String tipo;

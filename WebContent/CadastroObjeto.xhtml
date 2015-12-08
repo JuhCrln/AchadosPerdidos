@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:b="http://bootsfaces.net/ui" 
-	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
@@ -94,91 +93,98 @@
 }
 </style>
 </h:head>
-<h:body style="padding: 60px; style=padding-top: 60px; background-color: #FFFFFF;">
+<h:body
+	style="padding: 60px; style=padding-top: 60px; background-color: #FFFFFF;">
 	<b:navBar brandHref="#" fixed="top" inverse="true">
 		<b:navbarLinks pull="right">
-			<b:navLink value="Sair" href="TelaInicial.xhtml"></b:navLink>
+			<b:navLink value="Sign Out" href="TelaInicial.xhtml"></b:navLink>
 		</b:navbarLinks>
-			<b:navbarLinks pull = "left">
+		<b:navbarLinks pull="left">
+			<b:dropMenu value="Perfil">
+				<b:navLink value="Cadastrar Perfil" href="CadastroUsuario.xhtml"></b:navLink>
+			</b:dropMenu>
+			<b:dropMenu value="Objetos">
+				<b:navLink value="Cadastrar" href="CadastroObjeto.xhtml"></b:navLink>
+				<b:navLink value="Buscar" href="BuscaObjeto.xhtml"></b:navLink>
+			</b:dropMenu>
 		</b:navbarLinks>
 	</b:navBar>
 
 	<h:outputScript library="holder" name="holder.js" />
 	<b:container fluid="true">
-		<b:row>
-			<b:column col-sm="3" col-md="2" styleClass="sidebar"></b:column>
-			<h:form>
-			<br/>
-				<center>
-					<b><h:outputText value="Cadastro de Objetos" /></b>
-				</center>
-				<p:spacer height="7" />
-				<center>
-					<h:panelGrid columns="1" id="matchGrid" cellpadding="4">
-					
-						<h:outputText value="Tipo: " />
-						<p:inputText id="tipo" value="#{mBAchadosPerdidosRN.item.tipo}"
-					    feedback="true" />
-					    
-						<h:outputText value="Marca: " />
-						<p:inputText id="marca" value="#{mBAchadosPerdidosRN.item.marca}"
-						feedback="true" />
+		<h:form>
+			<br />
+			<p:spacer height="7" />
+			<center>
+			<h:panelGrid id="grid" columns="4" cellpadding="5">
+			 <h:outputLabel for="tipo" value="Tipo:" style="font-weight:bold"/>                    
+            <p:inputText id="tipo" value="#{mBAchadosPerdidosRN.item.tipo}" required="true" label="Tipo"/>
+            <p:message for="tipo" />
+            <h:outputText value="#{validacaoItem.tipo}" />
+            
+            <h:outputLabel for="marca" value="Marca:" style="font-weight:bold"/>                    
+            <p:inputText id="marca" value="#{mBAchadosPerdidosRN.item.marca}" required="true" label="Marca"/>
+            <p:message for="marca" />
+            <h:outputText value="#{validacaoItem.marca}" />
+            
+            <h:outputLabel for="cor" value="Cor:" style="font-weight:bold"/>                    
+            <p:inputText id="cor" value="#{mBAchadosPerdidosRN.item.cor}" required="true" label="Cor"/>
+            <p:message for="cor" />
+            <h:outputText value="#{validacaoItem.cor}" />
+            
+            
+            <h:outputLabel for="modelo" value="Modelo:" style="font-weight:bold"/>                    
+            <p:inputText id="modelo" value="#{mBAchadosPerdidosRN.item.modelo}" required="true" label="Modelo"/>
+            <p:message for="modelo" />
+            <h:outputText value="#{validacaoItem.modelo}" />
+            
+            
+            <h:outputLabel for="bairro" value="Bairro:" style="font-weight:bold"/>                    
+            <p:inputText id="bairro" value="#{mBAchadosPerdidosRN.item.bairro}" required="true" label="Bairro"/>
+            <p:message for="bairro" />
+            <h:outputText value="#{validacaoItem.bairro}" />
+            
+            <h:outputLabel for="cidade" value="Cidade:" style="font-weight:bold"/>                    
+            <p:inputText id="cidade" value="#{mBAchadosPerdidosRN.item.cidade}" required="true" label="Cidade"/>
+            <p:message for="cidade" />
+            <h:outputText value="#{validacaoItem.cidade}" />
+            
+            <h:outputLabel for="estado" value="Estado:" style="font-weight:bold"/>                    
+            <p:inputText id="estado" value="#{mBAchadosPerdidosRN.item.estado}" required="true" label="Estado"/>
+            <p:message for="estado" />
+            <h:outputText value="#{validacaoItem.estado}" />
+            
+            <h:outputLabel for="pontoDeReferencia" value="Ponto de Referência:" style="font-weight:bold"/>                    
+            <p:inputText id="pontoDeReferencia" value="#{mBAchadosPerdidosRN.item.pontoDeReferencia}" required="true" label="Ponto de Referência"/>
+            <p:message for="pontoDeReferencia" />
+            <h:outputText value="#{validacaoItem.pontoDeReferencia}" />
+            
+            <h:outputLabel for="horario" value="Horário:" style="font-weight:bold"/>                    
+            <p:inputText id="horario" value="#{mBAchadosPerdidosRN.item.horario}" required="true" label="Horário"/>
+            <p:message for="horario" />
+            <h:outputText value="#{validacaoItem.horario}" />
+            
+            <h:outputLabel for="outrasCaracteristicas" value="Outras Características:" style="font-weight:bold"/>                    
+            <p:inputText id="outrasCaracteristicas" value="#{mBAchadosPerdidosRN.item.outrasCaracteristicas}" required="true" label="Outras Características"/>
+            <p:message for="outrasCaracteristicas" />
+            <h:outputText value="#{validacaoItem.outrasCaracteristicas}" />
 
-					<h:outputText value="Cor: " />
-					<p:inputText id="cor" value="#{mBAchadosPerdidosRN.item.cor}"
-						feedback="true" />
-	
-					<h:outputText value="Modelo: " />
-					<p:inputText id="modelo" value="#{mBAchadosPerdidosRN.item.modelo}"
-						feedback="true" />
-	
-					<h:outputText value="Bairro: " />
-					<p:inputText id="bairro" value="#{mBAchadosPerdidosRN.item.bairro}"
-						feedback="true" />
-					
-					<h:outputText value="Cidade: " />
-					<p:inputText id="cidade" value="#{mBAchadosPerdidosRN.item.cidade}"
-						feedback="true" />
-						
-					<h:outputText value="Estado: " />
-					<p:inputText id="estado" value="#{mBAchadosPerdidosRN.item.estado}"
-						feedback="true" />
-	
-					<h:outputText value="Ponto de Referência:" />
-					<p:inputText id="pontoDeReferencia"
-						value="#{mBAchadosPerdidosRN.item.pontoDeReferencia}"
-						feedback="true" />
-	
-					<h:outputText value="Horário: " />
-					<p:inputText id="horario"
-						value="#{mBAchadosPerdidosRN.item.horario}" feedback="true" />
-	
-					<h:outputText value="Outras Características: " />
-					<p:inputTextarea rows="3" cols="33"
-						value="#{mBAchadosPerdidosRN.item.outrasCaracteristicas}"
-						feedback="true" />
-					</h:panelGrid>
-				</center>
-				<br />
-				<center>
+            </h:panelGrid>
+				
+			</center>
+			<br />
+			<center>
 				<p:commandButton
-						actionListener="#{mBAchadosPerdidosRN.salvarItem}"
-						update="matchGrid" value="Cadastrar" />
-				</center>
-			</h:form>
-			 <hr/>
-        	<center>
-        	<footer>
-        	@ Achados e Perdidos 2015
-        	</footer>
-        	</center>
-			<b:column col-sm="3" col-md="2" styleClass="sidebar1"></b:column>
-		</b:row>
-		<b:row>
-		</b:row>
+					actionListener="#{mBAchadosPerdidosRN.salvarItem}"
+					update="grid" value="Cadastrar" />
+			</center>
+		</h:form>
+		<p:spacer height="30" />
+		<hr />
+		<center>
+			<footer> @ Achados e Perdidos 2015 </footer>
+		</center>
 	</b:container>
 </h:body>
 </html>
 
-				
-				

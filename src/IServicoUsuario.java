@@ -11,5 +11,6 @@ public interface IServicoUsuario {
 	public void atualizaUsuario(Usuario usuario);
 	
 	public List<Usuario> buscaUsuario(String usuario);
-
+	
+	public List<Usuario> buscaUsuarioPorEmailSenha(String email, String senha);
 }
