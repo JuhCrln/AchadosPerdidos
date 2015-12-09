@@ -12,5 +12,7 @@ public interface IServicoUsuario {
 	
 	public List<Usuario> buscaUsuario(String usuario);
 	
+	public List<Usuario> buscaUsuarioPorID(int id);
+	
 	public List<Usuario> buscaUsuarioPorEmailSenha(String email, String senha);
 }

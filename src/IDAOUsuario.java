@@ -12,6 +12,8 @@ public interface IDAOUsuario {
 	public List<Usuario> busca();
 	
 	public List<Usuario> buscaUsuario(String usuario);
+	
+	public List<Usuario> buscaUsuarioPorID(int id);
 
 	public List<Usuario> buscaUsuarioPorEmailSenha(String email, String senha);
 }

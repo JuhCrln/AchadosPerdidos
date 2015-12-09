@@ -7,7 +7,8 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<class>Item</class>
-		
+		<class>Usuario</class>
+		<class>Mensagem</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

@@ -106,45 +106,34 @@
 		</b:navbarLinks>
 	</b:navBar>
 	<b:container fluid="true">
-		<h:form id="form">
-			<p:dataList value="#{mBAchadosPerdidosRN.lista_itens}" var="item"
-				type="unordered" itemType="none" paginator="true" rows="10"
-				styleClass="paginated">
-				<f:facet name="header">Itens Recentes</f:facet>
-				<p:commandLink update=":form:itemDetail"
-					oncomplete="PF('itemDialog').show()" title="Visualizar Detalhes"
-					styleClass="ui-icon ui-icon-search"
-					style="float:left;margin-right:10px">
-					<f:setPropertyActionListener value="#{item}"
-						target="#{mBAchadosPerdidosRN.selectedItem}" />
-					<h:outputText value="#{item.tipo}, #{item.modelo}" />
-				</p:commandLink>
-				<h:outputText value="#{item.tipo}, #{item.modelo}"
-					style="display:inline-block" />
-			</p:dataList>
+		<h:form>
+			<br />
+			<p:spacer height="7" />
+			<center>
+				<h:panelGrid id="grid" columns="4" cellpadding="5">
+					<h:outputLabel for="assunto" value="Assunto:"
+						style="font-weight:bold" />
+					<p:inputText id="assunto"
+						value="#{mBAchadosPerdidosRN.assunto_mensagem}" required="true"
+						label="Assunto" />
+					<br />
+					<h:outputLabel for="para" value="Para:" style="font-weight:bold" />
+					<p:inputText id="para" value="#{mBAchadosPerdidosRN.para_mensagem}"
+						required="true" label="Para" />
 
-			<p:dialog header="Detalhes do item" widgetVar="itemDialog"
-				modal="true" appendTo="@(body)" showEffect="blind"
-				hideEffect="explode" resizable="false">
-				<p:outputPanel id="itemDetail" style="text-align:center;">
-					<p:panelGrid columns="2"
-						rendered="#{not empty mBAchadosPerdidosRN.selectedItem}"
-						columnClasses="label,value">
-						<h:outputText value="Tipo:" />
-						<h:outputText value="#{mBAchadosPerdidosRN.selectedItem.tipo}" />
-
-						<h:outputText value="Modelo" />
-						<h:outputText value="#{mBAchadosPerdidosRN.selectedItem.modelo}" />
-
-						<h:outputText value="Cadastrado por:" />
-						<p:commandLink id="paraMensagem"
-							actionListener="#{mBAchadosPerdidosRN.paraMensagem}" ajax="false">
-							<h:outputText
-								value="#{mBAchadosPerdidosRN.selectedUsuario.nomeDeUsuario}" />
-						</p:commandLink>
-					</p:panelGrid>
-				</p:outputPanel>
-			</p:dialog>
+					<h:outputLabel for="corpo" value="Mensagem:"
+						style="font-weight:bold" />
+					<p:inputTextarea rows="6" cols="33" id="corpo"
+						value="#{mBAchadosPerdidosRN.corpo_mensagem}" required="true"
+						label="Mensagem" />
+				</h:panelGrid>
+			</center>
+			<br />
+			<center>
+				<p:commandButton
+					actionListener="#{mBAchadosPerdidosRN.salvarMensagem}"
+					update="grid" value="Enviar" />
+			</center>
 		</h:form>
 	</b:container>
 	<p:spacer height="150" />

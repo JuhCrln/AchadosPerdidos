@@ -5,6 +5,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.*;
 
+import org.primefaces.context.RequestContext;
+
 public class MBAchadosPerdidosRN {
 	// Atributos da tela de Login
 	private String email_login;
@@ -15,6 +17,7 @@ public class MBAchadosPerdidosRN {
 	private Usuario usuario;
 	private IServicoItem servItem;
 	private IServicoUsuario servUsuario;
+	private IServicoMensagem servMensagem;
 	private boolean checkMarca;
 	private boolean checkModelo;
 	private boolean checkCor;
@@ -25,12 +28,23 @@ public class MBAchadosPerdidosRN {
 	private String cidade;
 	private String estado;
 	private String nomeDeUsuario;
+	private List<Item> lista_itens;
+	private Item selectedItem;
+	private Item selectedItem_busca;
+	private Usuario selectedUsuario;
+	private Usuario selectedUsuario_busca;
+	private String para_mensagem;
+	private String assunto_mensagem;
+	private String corpo_mensagem;
+	private List<Item> lista_item_busca;
 
 	public MBAchadosPerdidosRN() {
 		item = new Item();
 		usuario = new Usuario();
 		servItem = new ServicoItem();
 		servUsuario = new ServicoUsuario();
+		servMensagem = new ServicoMensagem();
+		lista_itens = servItem.buscaItem();
 	}
 
 	public void login() {
@@ -48,7 +62,7 @@ public class MBAchadosPerdidosRN {
 			facesContext.addMessage("bem-vindo",
 					new FacesMessage("Be m-vindo, " + this.usuario_login.getNome().toUpperCase()));
 			try {
-				FacesContext.getCurrentInstance().getExternalContext().redirect("CadastroObjeto.xhtml");
+				FacesContext.getCurrentInstance().getExternalContext().redirect("TelaUsuario.xhtml");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -78,26 +92,26 @@ public class MBAchadosPerdidosRN {
 	}
 
 	public void filtro() {
-		List<Item> lista = null;
-
 		if (checkMarca == true) {
-			lista = servItem.buscaMarca(palavraChave);
+			lista_item_busca = servItem.buscaMarca(palavraChave);
 		}
 
 		else if (checkModelo == true) {
-			lista = servItem.buscaModelo(palavraChave);
+			lista_item_busca = servItem.buscaModelo(palavraChave);
 		}
 
 		else if (checkCor == true) {
-			lista = servItem.buscaCor(palavraChave);
+			lista_item_busca = servItem.buscaCor(palavraChave);
 		}
 
 		else if (checkCidade == true) {
-			lista = servItem.buscaCidade(palavraChave);
+			lista_item_busca = servItem.buscaCidade(palavraChave);
 		}
-
-		for (Item a : lista) {
-			System.out.println(a);
+		
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("BuscaObjeto.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -252,5 +266,96 @@ public class MBAchadosPerdidosRN {
 
 	public void setUsuario_login(Usuario usuario_login) {
 		this.usuario_login = usuario_login;
+	}
+
+	public List<Item> getLista_itens() {
+		return lista_itens;
+	}
+
+	public void setLista_itens(List<Item> lista_itens) {
+		this.lista_itens = lista_itens;
+	}
+
+	public Item getSelectedItem() {
+		return selectedItem;
+	}
+
+	public void setSelectedItem(Item selectedItem) {
+		this.selectedItem = selectedItem;
+	}
+
+	public Usuario getSelectedUsuario() {
+		return selectedUsuario = servUsuario.buscaUsuarioPorID(selectedItem.getId_usuario()).get(0);
+	}
+
+	public void setSelectedUsuario(Usuario selectedUsuario) {
+		this.selectedUsuario = selectedUsuario;
+	}
+	
+	public void paraMensagem() {
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("Mensagem.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String getPara_mensagem() {
+		return para_mensagem;
+	}
+
+	public void setPara_mensagem(String para_mensagem) {
+		this.para_mensagem = para_mensagem;
+	}
+
+	public String getAssunto_mensagem() {
+		return assunto_mensagem;
+	}
+
+	public void setAssunto_mensagem(String assunto_mensagem) {
+		this.assunto_mensagem = assunto_mensagem;
+	}
+
+	public String getCorpo_mensagem() {
+		return corpo_mensagem;
+	}
+
+	public void setCorpo_mensagem(String corpo_mensagem) {
+		this.corpo_mensagem = corpo_mensagem;
+	}
+	
+	public void salvarMensagem() {
+		Usuario user = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+		Mensagem msg = new Mensagem();
+		msg.setAssunto(assunto_mensagem);
+		msg.setDe(user.getNomeDeUsuario());
+		msg.setId_de(user.getId());
+		msg.setCorpo(corpo_mensagem);
+		msg.setPara(para_mensagem);
+		servMensagem.adcionaMensagem(msg);
+	}
+
+	public List<Item> getLista_item_busca() {
+		return lista_item_busca;
+	}
+
+	public void setLista_item_busca(List<Item> lista_item_busca) {
+		this.lista_item_busca = lista_item_busca;
+	}
+
+	public Item getSelectedItem_busca() {
+		return selectedItem_busca;
+	}
+
+	public void setSelectedItem_busca(Item selectedItem_busca) {
+		this.selectedItem_busca = selectedItem_busca;
+	}
+
+	public Usuario getSelectedUsuario_busca() {
+		return servUsuario.buscaUsuarioPorID(selectedItem_busca.getId_usuario()).get(0);
+	}
+
+	public void setSelectedUsuario_busca(Usuario selectedUsuario_busca) {
+		this.selectedUsuario_busca = selectedUsuario_busca;
 	}
 }

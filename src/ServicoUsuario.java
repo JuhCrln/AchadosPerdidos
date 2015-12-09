@@ -34,4 +34,8 @@ public class ServicoUsuario implements IServicoUsuario {
 		return dao.buscaUsuarioPorEmailSenha(email, senha);
 	}
 
+	@Override
+	public List<Usuario> buscaUsuarioPorID(int id) {
+		return dao.buscaUsuarioPorID(id);
+	}
 }

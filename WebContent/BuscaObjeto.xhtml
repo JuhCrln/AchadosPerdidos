@@ -112,7 +112,7 @@
 
 	<h:outputScript library="holder" name="holder.js" />
 	<b:container fluid="true">
-		<h:form>
+		<h:form id="form">
 			<br />
 			<p:spacer height="120" />
 			<center>
@@ -146,9 +146,50 @@
 			</center>
 			<br />
 			<center>
-				<p:commandButton
-					actionListener="#{mBAchadosPerdidosRN.filtro}"
+				<p:commandButton actionListener="#{mBAchadosPerdidosRN.filtro}"
 					update="matchGrid" value="Buscar" />
+
+				<br />
+
+				<p:dataList value="#{mBAchadosPerdidosRN.lista_item_busca}" var="item"
+					type="unordered" itemType="none" paginator="true" rows="10"
+					styleClass="paginated">
+					<f:facet name="header">Resultado da Busca</f:facet>
+					<p:commandLink update=":form:itemDetail"
+						oncomplete="PF('itemDialog').show()" title="Visualizar Detalhes"
+						styleClass="ui-icon ui-icon-search"
+						style="float:left;margin-right:10px">
+						<f:setPropertyActionListener value="#{item}"
+							target="#{mBAchadosPerdidosRN.selectedItem_busca}" />
+						<h:outputText value="#{item.tipo}, #{item.modelo}" />
+					</p:commandLink>
+					<h:outputText value="#{item.tipo}, #{item.modelo}"
+						style="display:inline-block" />
+				</p:dataList>
+
+				<p:dialog header="Detalhes do item" widgetVar="itemDialog"
+					modal="true" appendTo="@(body)" showEffect="blind"
+					hideEffect="explode" resizable="false">
+					<p:outputPanel id="itemDetail" style="text-align:center;">
+						<p:panelGrid columns="2"
+							rendered="#{not empty mBAchadosPerdidosRN.selectedItem_busca}"
+							columnClasses="label,value">
+							<h:outputText value="Tipo:" />
+							<h:outputText value="#{mBAchadosPerdidosRN.selectedItem_busca.tipo}" />
+
+							<h:outputText value="Modelo" />
+							<h:outputText value="#{mBAchadosPerdidosRN.selectedItem_busca.modelo}" />
+
+							<h:outputText value="Cadastrado por:" />
+							<p:commandLink id="paraMensagem"
+								actionListener="#{mBAchadosPerdidosRN.paraMensagem}"
+								ajax="false">
+								<h:outputText
+									value="#{mBAchadosPerdidosRN.selectedUsuario_busca.nomeDeUsuario}" />
+							</p:commandLink>
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:dialog>
 			</center>
 		</h:form>
 		<p:spacer height="100" />
