@@ -49,7 +49,6 @@ public class ItemDAO implements IDAOItem {
 		Query query = manager.createQuery("select t from Item as t");
 		@SuppressWarnings("unchecked")
 		List<Item> lista = query.getResultList();
-		;
 		return lista;
 	}
 

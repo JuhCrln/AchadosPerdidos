@@ -118,6 +118,11 @@ public class MBAchadosPerdidosRN {
 	public void salvarUsuario() {
 		servUsuario.adicionaUsuario(usuario);
 		usuario = new Usuario();
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("TelaInicial.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void removerUsuario() {
@@ -333,6 +338,11 @@ public class MBAchadosPerdidosRN {
 		msg.setCorpo(corpo_mensagem);
 		msg.setPara(para_mensagem);
 		servMensagem.adcionaMensagem(msg);
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("TelaUsuario.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public List<Item> getLista_item_busca() {

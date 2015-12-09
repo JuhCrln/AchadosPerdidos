@@ -6,8 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<title>Dashboard Template for BootsFaces</title>
-	<meta name="author" content="Riccardo Massera"></meta>
+	<title>Achados e Perdidos RN</title>
 	<style type="text/css">
 .sub-header {
 	border-bottom: 1px solid #eee;
@@ -110,7 +109,7 @@
 			<p:dataList value="#{mBAchadosPerdidosRN.lista_itens}" var="item"
 				type="unordered" itemType="none" paginator="true" rows="10"
 				styleClass="paginated">
-				<f:facet name="header">Itens Recentes</f:facet>
+				<f:facet name="header">Objetos Achados Recentemente</f:facet>
 				<p:commandLink update=":form:itemDetail"
 					oncomplete="PF('itemDialog').show()" title="Visualizar Detalhes"
 					styleClass="ui-icon ui-icon-search"
