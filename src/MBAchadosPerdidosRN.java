@@ -1,18 +1,18 @@
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.*;
 
-import org.primefaces.context.RequestContext;
 
 public class MBAchadosPerdidosRN {
 	// Atributos da tela de Login
 	private String email_login;
 	private String senha_login;
 	private Usuario usuario_login;
-
+	
 	private Item item;
 	private Usuario usuario;
 	private IServicoItem servItem;
@@ -59,8 +59,7 @@ public class MBAchadosPerdidosRN {
 			//Criacao da sessao
 			HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
 			session.setAttribute("usuario", this.usuario_login);
-			facesContext.addMessage("bem-vindo",
-					new FacesMessage("Be m-vindo, " + this.usuario_login.getNome().toUpperCase()));
+			
 			try {
 				FacesContext.getCurrentInstance().getExternalContext().redirect("TelaUsuario.xhtml");
 			} catch (IOException e) {
